@@ -402,7 +402,7 @@ game.catchPokemon=catchPokemon =(pokemonObj)=>{
     }
 };
 game.catchPokemon(pokemon[10])
-//game.catchPokemon(pokemon[100])  for testing case where Pokemon in party or collection
+//game.catchPokemon(pokemon[10])  //for testing case where Pokemon in party or collection
 console.log(game)
 console.log()
 
@@ -418,9 +418,73 @@ If there is not a match, then return a string noting that the selected Pokemon d
 Solve Exercise 20 here:
 */
 
+console.log("Exercise 20:")
+game.catchPokemon=catchPokemon =(pokeName)=>{
+    const evryCase= pokeName.toLowerCase();
+    let addPoke=false;
+    for(let c=0;c<pokemon.length;c++){
+        if(evryCase === pokemon[c].name.toLowerCase()){
+            if( (!game.party.find((poke)=> poke.name === pokeName) && !game.collection.find((poke)=> poke.name === pokeName))){
+                if(game.items[1].quantity !== 0 ){
+                    addPoke=true;
+                    // if(game.party.length === 6){
+                    //     game.collection.push(pokemon[c])
+                    //     game.items[1].quantity--;
+                    // }
+                    // else{
+                    //     game.party.push(pokemon[c]);
+                    //     game.items[1].quantity--;
+                    // }
+                    console.log(pokemon[c])
+                }
+                else{
+                    console.log("there are not enough pokeballs to catch the desired Pokemon");
+                }
+            }else{
+                console.log("you already have same type of Pokemon in the party or collection");
+            }
+        }
+    }
+    if(addPoke === false)
+        console.log("selected Pokemon does not exist")
+};
+game.catchPokemon("Bulbasaur");
+console.log()
 
 
+/*
+Exercise 21
+Dynamically construct an object with the existing `pokemon` data sorted by the different pokemon types. The object will have this structure:
 
+{
+  grass: [
+    { number: 1, name: 'Bulbasaur', type: 'grass', hp: 45, starter: true },
+    { number: 2, name: 'Ivysaur', type: 'grass', hp: 60, starter: false },
+    { number: 3, name: 'Venusaur', type: 'grass', hp: 80, starter: false },
+    * more grass type Pokemon objects...
+  ],
+  fire: [
+    { number: 4, name: 'Charmander', type: 'fire', hp: 39, starter: true },
+    * more fire type Pokemon objects...
+  ],
+  water: [
+    * water type Pokemon objects...
+  ],
+  * etc... until there is an array for every Pokemon type!
+}
 
+Log the object when it's constructed.
 
+Solve Exercise 21 here:
+*/
 
+console.log("Exercise 21:")
+const pokeSortByType = {};
+for (let c = 0; c < pokemon.length; c++) {
+  const type = pokemon[c].type;
+  if(!pokeSortByType[type]) { // checking if the type is exist, if not add the type as array that will hold pokemon of same type
+    pokeSortByType[type] = [];
+  }
+  pokeSortByType[type].push(pokemon[c]);
+}
+console.log(pokeSortByType)
