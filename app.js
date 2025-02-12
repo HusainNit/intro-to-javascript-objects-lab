@@ -482,7 +482,7 @@ console.log("Exercise 21:")
 const pokeSortByType = {};
 for (let c = 0; c < pokemon.length; c++) {
   const type = pokemon[c].type;
-  if(!pokeSortByType[type]) { // checking if the type is exist, if not add the type as array that will hold pokemon of same type
+  if(!pokeSortByType[type]) { // checking if the type is exist, if not add the type as array that will hold pokemon's of the same type
     pokeSortByType[type] = [];
   }
   pokeSortByType[type].push(pokemon[c]);
