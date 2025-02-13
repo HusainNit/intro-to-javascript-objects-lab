@@ -435,7 +435,7 @@ game.catchPokemon=catchPokemon =(pokeName)=>{
                         game.party.push(pokemon[c]);
                         game.items[1].quantity--;
                     }
-                    console.log(pokemon[c])
+                    console.log(pokemon[c]) //for the look up
                     
                 }
                 else{
