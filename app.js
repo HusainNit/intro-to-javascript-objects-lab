@@ -419,6 +419,17 @@ Solve Exercise 20 here:
 */
 
 console.log("Exercise 20:")
+
+/**
+ * this is confusing:
+ * 1. the method intended for lookup(which means its will lookup up and return indication that it has find it in the original data or not)
+ * 
+ * 2. but what this have to do with in a method will do "look up":
+ *  Ensure you do not decrement the pokeball count if an invalid Pokemon name is passed in, 
+ * 
+ * and also ensure that the Pokemon isn't added to the `game.party` or the `game.collection`.
+ */
+
 game.catchPokemon=catchPokemon =(pokeName)=>{
     const evryCase= pokeName.toLowerCase();
     let addPoke=false;
