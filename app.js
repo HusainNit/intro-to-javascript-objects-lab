@@ -384,7 +384,7 @@ Solve Exercise 19 here:
 console.log("Exercise 19:")
 game.catchPokemon=catchPokemon =(pokemonObj)=>{
     if( (!game.party.find((poke)=> poke.number === pokemonObj.number) && !game.collection.find((poke)=> poke.number === pokemonObj.number))){
-        if(game.items[1].quantity !== 0 ){
+        if(game.items[1].quantity > 0 ){
             if(game.party.length === 6){
                 game.collection.push(pokemonObj)
                 game.items[1].quantity--;
@@ -419,34 +419,24 @@ Solve Exercise 20 here:
 */
 
 console.log("Exercise 20:")
-
-/**
- * this is confusing:
- * 1. the method intended for lookup(which means its will lookup up and return indication that it has find it in the original data or not)
- * 
- * 2. but what this have to do with in a method will do "look up":
- *  Ensure you do not decrement the pokeball count if an invalid Pokemon name is passed in, 
- * 
- * and also ensure that the Pokemon isn't added to the `game.party` or the `game.collection`.
- */
-
 game.catchPokemon=catchPokemon =(pokeName)=>{
     const evryCase= pokeName.toLowerCase();
     let addPoke=false;
     for(let c=0;c<pokemon.length;c++){
         if(evryCase === pokemon[c].name.toLowerCase()){
             if( (!game.party.find((poke)=> poke.name === pokeName) && !game.collection.find((poke)=> poke.name === pokeName))){
-                if(game.items[1].quantity !== 0 ){
+                if(game.items[1].quantity > 0 ){
                     addPoke=true;
-                    // if(game.party.length === 6){
-                    //     game.collection.push(pokemon[c])
-                    //     game.items[1].quantity--;
-                    // }
-                    // else{
-                    //     game.party.push(pokemon[c]);
-                    //     game.items[1].quantity--;
-                    // }
+                    if(game.party.length === 6){
+                        game.collection.push(pokemon[c])
+                        game.items[1].quantity--;
+                    }
+                    else{
+                        game.party.push(pokemon[c]);
+                        game.items[1].quantity--;
+                    }
                     console.log(pokemon[c])
+                    
                 }
                 else{
                     console.log("there are not enough pokeballs to catch the desired Pokemon");
